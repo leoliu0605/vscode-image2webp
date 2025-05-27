@@ -1,11 +1,31 @@
 {
   "name": "image-to-webp",
   "displayName": "Image to WebP",
-  "description": "",
-  "version": "0.0.1",
+  "description": "Convert JPG and PNG images to WebP format.",
+  "version": "0.1.0",
+  "preview": false,
+  "publisher": "Leo0605",
+  "icon": "images/icon.png",
+  "homepage": "https://github.com/leoliu0605/vscode-image2webp",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leoliu0605/vscode-image2webp"
+  },
+  "bugs": {
+    "url": "https://github.com/leoliu0605/vscode-image2webp/issues"
+  },
   "engines": {
     "vscode": "^1.100.0"
   },
+  "license": "MIT",
+  "keywords": [
+    "vscode",
+    "webp",
+    "image",
+    "convert",
+    "imagemin",
+    "imagemin-webp"
+  ],
   "categories": [
     "Other"
   ],
@@ -14,10 +34,28 @@
   "contributes": {
     "commands": [
       {
-        "command": "image-to-webp.helloWorld",
-        "title": "Hello World"
+        "command": "image-to-webp.convert",
+        "title": "Convert to WebP"
+      },
+      {
+        "command": "image-to-webp.convert-replace",
+        "title": "Convert to WebP (Replace)"
       }
-    ]
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "image-to-webp.convert",
+          "when": "resourceExtname =~ /\\.(png|jpe?g)$/i",
+          "group": "image-to-webp@1"
+        },
+        {
+          "command": "image-to-webp.convert-replace",
+          "when": "resourceExtname =~ /\\.(png|jpe?g)$/i",
+          "group": "image-to-webp@2"
+        }
+      ]
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run package",
@@ -34,16 +72,19 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.100.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
+    "@types/vscode": "^1.100.0",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
-    "eslint": "^9.25.1",
-    "esbuild": "^0.25.3",
-    "npm-run-all": "^4.1.5",
-    "typescript": "^5.8.3",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "esbuild": "^0.25.3",
+    "eslint": "^9.25.1",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^5.8.3"
+  },
+  "dependencies": {
+    "sharp": "^0.34.2"
   }
 }
