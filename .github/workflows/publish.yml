@@ -24,10 +24,17 @@ jobs:
           node-version: '20'
 
       - name: 安裝相依套件
-        run: npm ci
+        run: |
+          npm ci
+          npm install --cpu=x64 --os=windows sharp
+          npm install --cpu=arm64 --os=windows sharp
+          npm install --cpu=x64 --os=darwin sharp
+          npm install --cpu=arm64 --os=darwin sharp
+          npm install --cpu=x64 --os=linux --libc=glibc sharp
+          npm install --cpu=x64 --os=linux --libc=musl sharp
 
       - name: 打包擴充功能
-        run: npx -y vsce package
+        run: npx -y vsce package && npx -y vsce ls
 
       - name: 讀取版本
         id: package_version
