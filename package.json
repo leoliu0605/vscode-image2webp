@@ -7,6 +7,9 @@
   "publisher": "Leo0605",
   "icon": "images/icon.png",
   "homepage": "https://github.com/leoliu0605/vscode-image2webp",
+  "sponsor": {
+    "url": "https://github.com/sponsors/leoliu0605"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/leoliu0605/vscode-image2webp"
